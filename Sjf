@@ -1,0 +1,112 @@
+#include<stdio.h>
+
+int main()
+{
+    
+    int AT[100],BT[100],P[100],CT[100],TAT[100],WT[100];
+    int n,i,j,temp,current_time=0,start_time,completed=0,count;
+    float avg_TAT=0.0,avg_WT=0.0;
+    
+    printf("NON PREEMPTIVE SHORTEST JOB FIRST\n");
+    printf("---------------------------------");
+    
+    printf("\n\nEnter number of processes: ");
+    scanf("%d",&n);
+    
+    printf("\nEnter arrival time and burst time for each process :\n\n");
+    
+    for(i=0;i<n;i++)
+    {
+        printf("\nEnter arrival time of process [%d]: ",i);
+        scanf("%d",&AT[i]);
+
+        printf("Enter burst time of process [%d]: ",i);
+        scanf("%d",&BT[i]);
+        
+        P[i]=i;
+        printf("\n");
+    }
+    
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(AT[i]>AT[j])
+            {
+                temp=AT[i];
+                AT[i]=AT[j];
+                AT[j]=temp;
+                temp=BT[i];
+                BT[i]=BT[j];
+                BT[j]=temp;
+                temp=P[i];
+                P[i]=P[j];
+                P[j]=temp;
+            }
+        }
+    }
+    
+    printf("Process\tAT\tBT\tCT\tTAT\tWT\t\n\n");
+    
+    while(completed<n)
+    {
+        
+        count=0;
+        
+        for(i=completed;i<n;i++)
+        {
+            
+            if(AT[i]<=current_time)
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        if(count>1)
+        {
+            for(i=completed;i<(completed+count-1);i++)
+            {
+                for(j=i+1;j<completed+count;j++)
+                {
+                    if(BT[i]>BT[j])
+                    {
+                        temp=AT[i];
+                        AT[i]=AT[j];
+                        AT[j]=temp;
+                        temp=BT[i];
+                        BT[i]=BT[j];
+                        BT[j]=temp;
+                        temp=P[i];
+                        P[i]=P[j];
+                        P[j]=temp;
+                    }
+                }
+            }
+        }
+        
+        start_time=current_time;
+        CT[completed]=start_time+BT[completed];
+        TAT[completed]=CT[completed]-AT[completed];
+        WT[completed]=TAT[completed]-BT[completed];
+        current_time=CT[completed];
+        
+        printf("P%d\t%d\t%d\t%d\t%d\t%d\n",P[completed],AT[completed],BT[completed],CT[completed],TAT[completed],WT[completed]);
+//printf("\n");
+
+        avg_TAT=avg_TAT+TAT[completed];
+        avg_WT=avg_WT+WT[completed];
+        completed++;
+    }
+    avg_TAT=avg_TAT/n;
+    avg_WT=avg_WT/n;
+    
+    printf("\nAverage Turn around time= %f\n",avg_TAT);
+    printf("\nAverage Waiting time= %f\n",avg_WT);
+    
+    return 0;
+    
+}
