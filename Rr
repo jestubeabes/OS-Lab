@@ -1,0 +1,108 @@
+#include<stdio.h>
+
+int main()
+{
+    int AT[50],BT[50],CT[50],TAT[50],WT[50],P[50],temp[50];
+    int i,j,n,pos,time_quantum,total=0,x,count=0;
+    float avg_TAT=0.0,avg_WT=0.0;
+    
+    printf("ROUND ROBIN\n");
+    printf("-----------");
+    
+    printf("\n\nEnter number of processes :");
+    scanf("%d",&n);
+    
+    printf("\nEnter arrival time and burst time for each process :\n\n");
+    
+    x=n;
+    
+    for(i=0;i<n;i++)
+    {
+        printf("Enter arrival time of process [%d] :",i);
+        scanf("%d",&AT[i]);
+        
+        printf("Enter burst time of process [%d] :",i);
+        scanf("%d",&BT[i]);
+        
+        temp[i]=BT[i];
+        printf("\n");
+    }
+    
+    for(i=0;i<n;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(AT[i]>AT[j])
+            {          
+                pos =AT[i];
+                AT[i]=AT[j];
+                AT[j]=pos;
+                pos =BT[i];
+                BT[i]=BT[j];
+                BT[j]=pos;
+                pos =P[i];
+                P[i]=P[j];
+                P[j]=pos;
+            }
+        }
+    }
+    
+    printf("\nEnter Time Quantum:");
+    scanf("%d", &time_quantum);
+    
+    printf("\nProcess\t\tAT\tBT\tCT\tTAT\tWT\n");
+    
+    while(x!= 0)
+    {
+        
+        if(temp[i] <= time_quantum && temp[i] > 0)
+        {
+            total = total + temp[i];
+            temp[i] = 0;
+            count = 1;
+        }
+        
+        else if(temp[i] > 0)
+        {
+            temp[i] = temp[i] - time_quantum;
+            total = total + time_quantum;
+        }
+        
+        if(temp[i] == 0 && count == 1)
+        {
+            x--;
+            CT[i]=total;
+            
+            printf("P%d\t\t%d\t%d\t%d\t%d\t%d\n",i,AT[i],BT[i],CT[i],CT[i]-AT[i],CT[i]-AT[i]-BT[i]);
+            
+            avg_TAT=avg_TAT+total-AT[i];
+            avg_WT=avg_WT+total-AT[i]-BT[i];
+            
+            count = 0;
+        }
+        
+        if(i == n - 1)
+        {
+            i = 0;
+        }
+        
+        else if(AT[i + 1] <= total)
+        {
+            i++;
+        }
+        
+        else
+        {
+            i = 0;
+        }
+    }
+    
+    avg_TAT=avg_TAT/n;
+    avg_WT=avg_WT/n;
+    
+    printf("\nAverge Turnaround Time= %f\n", avg_TAT);
+    printf("\nAverage Waiting Time= %f\n", avg_WT);
+    
+    return 0;
+    
+}
