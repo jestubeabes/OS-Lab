@@ -1,0 +1,104 @@
+#include <stdio.h>
+
+int main()
+{
+    int i, j, pmsize, pgsize, frame, process, propg[50],pfno[50][50],pbit[50][50], ftable[50],p[50],frameno,rempage=0;
+    printf("\n\t\tMEMORY MANAGEMENT USING PAGING\n\t\t------ ---------- ----- ------\n");
+    printf("\n Note: It is advised to use size as power of 2. ;)\n");
+    printf("\n Enter the main memory size: ");
+    scanf("%d",&pmsize);
+    printf(" Enter the page size: ");
+    scanf("%d",&pgsize);
+
+    frame=(int)pmsize/pgsize;
+    printf("\n --->The physical memory is divided into %d no. of frames.\n",frame);
+
+    printf("\n Enter the number of process: ");
+    scanf("%d",&process);
+    printf(" Enter the no. of pages required for each process; \n");
+    for(i=0; i<process; i++)
+    {
+        printf("\n\t Process[%d]: ",i);
+        scanf("%d",&propg[i]);
+    }
+    printf("\n");
+
+    for(i=0; i<process; i++)
+    {
+        for (int j=0; j<propg[i]; j++)
+        {
+            pfno[i][j] = -1;
+            pbit[i][j]= -1;
+        }
+    }
+
+    for(i=0; i<frame; i++)
+    {
+        ftable[i] = -1;
+        p[i]=-1;
+    }
+
+    for(i=0; i<process; i++)
+    {
+        rempage+=propg[i];
+        if(rempage<=frame)
+        {
+            for (j=0; j<propg[i]; j++)
+            {
+                printf(" Enter the frame number where Page[%d] of Process[%d] must be placed(<%d): ",j,i,frame);
+                scanf("%d",&frameno);
+
+                if(ftable[frameno]==-1)
+                {
+                    ftable[frameno] = j;
+                    p[frameno]=i;
+                    if(pbit[i][j] == -1)
+                    {
+                        pfno[i][j] = frameno;
+                        pbit[i][j] = 1;
+                    }
+                }
+                else
+                {
+                    if(frameno<frame)
+                    {
+                        printf("\n\t -->Frame %d is already allocated.\n\n",frameno);
+                    }
+                    else
+                    {
+                        printf("\n\t -->Error! %d is out of bound of frame!\n\n",frameno);
+                    }
+                    j--;
+                    continue;
+                }
+            }
+            printf("\n");
+        }
+        else
+        {
+            printf("\t -->Memory full! Pages of Process[%d] cannot be allocated.\n\n",i);
+            rempage-=propg[i];
+        }
+    }
+
+
+
+    printf("\n\t\tPAGE TABLE\n\t\t---- -----\n");
+    printf("Processno.\tPageno.\t\tFrameNo.\n\n");
+    for(i=0; i<process; i++)
+    {
+        for (int j=0; j<propg[i]; j++)
+        {
+            printf("P%d\t\t%d\t\t%d\n",i,j,pfno[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n\n\t\tFRAME TABLE\n\t\t----- -----\n");
+    printf("Frameno.\tProcessno.\tPageNo\n\n");
+    for(i=0; i<frame; i++)
+    {
+        printf("%d\t\tP%d\t\t%d\n",i,p[i],ftable[i]);
+    }
+}
+
