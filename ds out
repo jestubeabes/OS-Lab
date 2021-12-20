@@ -1,0 +1,93 @@
+DISK SCHEDULING
+1.FCFS
+2.SCAN
+3.CSCAN
+4.Exit
+
+Enter your choice: 1
+Enter the size of Queue: 7
+Enter the Queue: 82
+170
+43
+140
+24
+16
+190
+Enter the initial head position: 50
+
+Movement of Cylinders
+Move from 50 to 82 with seek time 32
+Move from 82 to 170 with seek time 88
+Move from 170 to 43 with seek time 127
+Move from 43 to 140 with seek time 97
+Move from 140 to 24 with seek time 116
+Move from 24 to 16 with seek time 8
+Move from 16 to 190 with seek time 174
+
+Total Seek Time: 642
+Average Seek Time = 91.714287
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+DISK SCHEDULING
+1.FCFS
+2.SCAN
+3.CSCAN
+4.Exit
+
+Enter your choice: 2
+Enter the number of Requests
+7
+Enter the Requests sequence
+82
+170
+43
+140
+24
+16
+190
+Enter initial head position
+50
+Enter total disk size
+200
+Enter the head movement direction for high 1 and for low 0
+1
+Total head movement is 332
+ Do you want to continue?(yes-1/no-0)
+1
+
+DISK SCHEDULING
+1.FCFS
+2.SCAN
+3.CSCAN
+4.Exit
+
+Enter your choice: 3
+Enter the number of Requests
+7
+Enter the Requests sequence
+82
+170
+43
+140
+24
+16
+190
+Enter initial head position
+50
+Enter total disk size
+200
+Enter the head movement direction for high 1 and for low 0
+1
+Total head movement is 391
+ Do you want to continue?(yes-1/no-0)
+1
+
+DISK SCHEDULING
+1.FCFS
+2.SCAN
+3.CSCAN
+4.Exit
+
+Enter your choice: 4
