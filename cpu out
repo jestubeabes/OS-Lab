@@ -1,0 +1,134 @@
+CPU SCHEDULING
+1.FCFS
+2.SJF
+3.ROUND ROBIN
+4.Exit
+
+Enter your choice: 1
+FIRST COME FIRST SERVE
+----------------------
+
+Enter number of processes :4
+
+Enter arrival time and burst time for each process :
+
+Arrival time of process[0] :0
+Burst time of process[0] :6
+
+Arrival time of process[1] :1
+Burst time of process[1] :8
+
+Arrival time of process[2] :2
+Burst time of process[2] :1
+
+Arrival time of process[3] :3
+Burst time of process[3] :3
+
+Process	 AT	 BT	 CT	 TAT	 WT	
+
+P0	 0	 6	 6	 6	 0
+P1	 1	 8	 14	 13	 5
+P2	 2	 1	 15	 13	 12
+P3	 3	 3	 18	 15	 12
+
+Average Turnaround Time = 11.750000
+
+Average WT = 7.250000
+
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+CPU SCHEDULING
+1.FCFS
+2.SJF
+3.ROUND ROBIN
+4.Exit
+
+Enter your choice: 2
+SHORTEST JOB FIRST
+---------------------------------
+
+Enter number of processes: 4
+
+Enter arrival time and burst time for each process :
+
+
+Enter arrival time of process [0]: 0
+Enter burst time of process [0]: 6
+
+
+Enter arrival time of process [1]: 1
+Enter burst time of process [1]: 8
+
+
+Enter arrival time of process [2]: 2
+Enter burst time of process [2]: 1
+
+
+Enter arrival time of process [3]: 3
+Enter burst time of process [3]: 3
+
+Process	AT	BT	CT	TAT	WT	
+
+P0	0	6	6	6	0
+P2	2	1	7	5	4
+P3	3	3	10	7	4
+P1	1	8	18	17	9
+
+Average Turn around time= 8.750000
+
+Average Waiting time= 4.250000
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+CPU SCHEDULING
+1.FCFS
+2.SJF
+3.ROUND ROBIN
+4.Exit
+
+Enter your choice: 3
+ROUND ROBIN
+-----------
+
+Enter number of processes :4
+
+Enter arrival time and burst time for each process :
+
+Enter arrival time of process [0] :0
+Enter burst time of process [0] :6
+
+Enter arrival time of process [1] :1
+Enter burst time of process [1] :8
+
+Enter arrival time of process [2] :2
+Enter burst time of process [2] :1
+
+Enter arrival time of process [3] :3
+Enter burst time of process [3] :3
+
+
+Enter Time Quantum:4
+
+Process		AT	BT	CT	TAT	WT
+P2		2	1	 9	 7	 6
+P3		3	3	12	 9	 6
+P0		0	6	14	14	 8
+P1		1	8	18	17	 9
+
+Averge Turnaround Time= 7.250000
+
+Average Waiting Time= 11.750000
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+CPU SCHEDULING
+1.FCFS
+2.SJF
+3.ROUND ROBIN
+4.Exit
+
+Enter your choice: 4
