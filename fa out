@@ -1,0 +1,83 @@
+FILE ALLOCATION
+1.Sequence
+2.Indexed
+3.Linked
+4.Exit
+
+Enter your choice: 1
+
+Enter the starting block & length of the file:3
+5
+
+3->1
+4->1
+5->1
+6->1
+7->1
+Do you want to enter more files?(Y-1/N-0)0
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+FILE ALLOCATION
+1.Sequence
+2.Indexed
+3.Linked
+4.Exit
+
+Enter your choice: 2
+enter index block	2
+enter no of files on index	4
+
+Enter the file blocks to be indexed :5
+6
+7
+8
+
+ allocated
+ file indexed
+ 2-  >5:1
+ 2-  >6:1
+ 2-  >7:1
+ 2-  >8:1
+Enter 1 to enter more files and 0 to exit	0
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+FILE ALLOCATION
+1.Sequence
+2.Indexed
+3.Linked
+4.Exit
+
+Enter your choice: 3
+Enter how many blocks that are already allocated :3
+
+Enter the blocks no.s that are already allocated :5
+7
+9
+Enter the starting index block & length :4
+6
+
+4->1
+ 5-  >file is already allocated
+6->1
+ 7-  >file is already allocated
+8->1
+ 9-  >file is already allocated
+10->1
+11->1
+12->1
+ Do you want to enter one more file? (yes-1/no-0)0
+
+ Do you want to continue?(yes-1/no-0)
+1
+
+FILE ALLOCATION
+1.Sequence
+2.Indexed
+3.Linked
+4.Exit
+
+Enter your choice: 4
